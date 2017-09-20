@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F2411" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--现场直播-->
+        <scene sceneID="hNz-n2-bh7">
+            <objects>
+                <viewController id="9pv-A4-QxB" customClass="YYXLiveViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
+                        <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="直播页面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTE-KG-0Hb">
+                                <rect key="frame" x="16" y="100" width="343" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-CY-kxH">
+                                <rect key="frame" x="136" y="216" width="103" height="36"/>
+                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="我要当主播">
+                                    <color key="titleColor" red="1" green="0.079937060670000004" blue="0.1489183348" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOZ-Bh-4KS">
+                                <rect key="frame" x="136" y="332" width="103" height="36"/>
+                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="我要做观众"/>
+                                <connections>
+                                    <action selector="Watch:" destination="9pv-A4-QxB" eventType="touchUpInside" id="nKj-pg-lfs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.17294368760000001" green="1" blue="0.13454820510000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="l4K-CY-kxH" firstAttribute="top" secondItem="yTE-KG-0Hb" secondAttribute="bottom" constant="80" id="1bo-oV-oMh"/>
+                            <constraint firstItem="l4K-CY-kxH" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="120" id="Eur-Oy-Ruc"/>
+                            <constraint firstItem="yTE-KG-0Hb" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="80" id="Ge1-Ai-XLq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="l4K-CY-kxH" secondAttribute="trailing" constant="120" id="OCY-MD-tYb"/>
+                            <constraint firstItem="l4K-CY-kxH" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="fjy-wn-rH6"/>
+                            <constraint firstItem="yTE-KG-0Hb" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="nOO-tV-78Q"/>
+                            <constraint firstItem="IOZ-Bh-4KS" firstAttribute="top" secondItem="l4K-CY-kxH" secondAttribute="bottom" constant="80" id="rBE-zG-iif"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yTE-KG-0Hb" secondAttribute="trailing" id="ry1-VQ-BPd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IOZ-Bh-4KS" secondAttribute="trailing" constant="120" id="zc5-9f-8ri"/>
+                            <constraint firstItem="IOZ-Bh-4KS" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="120" id="zrd-cz-Hfi"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fjy-wn-rH6"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="现场直播" image="first" id="acW-dT-cKf"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711.5" y="-312.5"/>
+        </scene>
+        <!--媒体播放-->
+        <scene sceneID="wg7-f3-ORb">
+            <objects>
+                <viewController id="8rJ-Kc-sve" customClass="YYXMediaPlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="媒体播放" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
+                                <rect key="frame" x="16" y="100" width="343" height="35"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRy-zZ-vQm">
+                                <rect key="frame" x="116" y="331" width="143" height="36"/>
+                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="播放本地文件"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3P-wa-WfM">
+                                <rect key="frame" x="116" y="215" width="143" height="36"/>
+                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="播放网络媒体"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="zEq-FU-wV5" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="3yV-cf-bIS"/>
+                            <constraint firstItem="X3P-wa-WfM" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="100" id="4Tv-5U-28M"/>
+                            <constraint firstItem="zEq-FU-wV5" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="5FV-B7-ZsM"/>
+                            <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="80" id="5IV-Yr-AUs"/>
+                            <constraint firstItem="X3P-wa-WfM" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="80" id="9yV-6v-pyv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="X3P-wa-WfM" secondAttribute="trailing" constant="100" id="BuS-QQ-L1K"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IRy-zZ-vQm" secondAttribute="trailing" constant="100" id="jMV-TO-2Cj"/>
+                            <constraint firstItem="IRy-zZ-vQm" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="100" id="m36-YN-7N5"/>
+                            <constraint firstItem="IRy-zZ-vQm" firstAttribute="top" secondItem="X3P-wa-WfM" secondAttribute="bottom" constant="80" id="ztb-10-RW5"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="媒体播放" image="second" id="cPa-gy-q4n"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717.5" y="434.5"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+        <image name="second" width="30" height="30"/>
+    </resources>
+</document>
