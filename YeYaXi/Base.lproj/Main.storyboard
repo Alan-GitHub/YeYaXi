@@ -23,14 +23,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-CY-kxH">
-                                <rect key="frame" x="136" y="216" width="103" height="36"/>
-                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="我要当主播">
-                                    <color key="titleColor" red="1" green="0.079937060670000004" blue="0.1489183348" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOZ-Bh-4KS">
                                 <rect key="frame" x="136" y="332" width="103" height="36"/>
                                 <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,6 +30,17 @@
                                 <state key="normal" title="我要做观众"/>
                                 <connections>
                                     <action selector="Watch:" destination="9pv-A4-QxB" eventType="touchUpInside" id="nKj-pg-lfs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-CY-kxH">
+                                <rect key="frame" x="136" y="216" width="103" height="36"/>
+                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="我要当主播">
+                                    <color key="titleColor" red="1" green="0.079937060670000004" blue="0.1489183348" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="Live:" destination="9pv-A4-QxB" eventType="touchUpInside" id="NWv-US-Zk3"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -8,6 +8,7 @@
 
 #import "YYXLiveViewController.h"
 #import "YYXInputURLViewController.h"
+#import "ViewController.h"
 
 @interface YYXLiveViewController ()
 
@@ -19,6 +20,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+- (IBAction)Live:(id)sender {
+    ViewController* liveViewController = [[ViewController alloc] initWithNibName:@"PushStreamViewController" bundle:NULL];
+    
+    //ViewController* liveViewController = [[ViewController alloc] init];
+    
+    [self presentViewController:liveViewController animated:YES completion:NULL];
+}
+
 
 - (IBAction)Watch:(id)sender {
     YYXInputURLViewController* inputURL = [[YYXInputURLViewController alloc] initWithNibName:@"YYXInputURL" bundle:NULL];
