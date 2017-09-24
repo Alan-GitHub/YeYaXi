@@ -6,14 +6,14 @@
 //  Copyright © 2016年 admin. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "YYXPushStreamViewController.h"
 #import "LFLivePreview.h"
 
-@interface ViewController ()
+@interface YYXPushStreamViewController ()
 
 @end
 
-@implementation ViewController
+@implementation YYXPushStreamViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

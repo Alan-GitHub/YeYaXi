@@ -20,6 +20,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] init];
+    [tap addTarget:self action:@selector(backMainInterface)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +56,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#
+- (void) backMainInterface
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end
 

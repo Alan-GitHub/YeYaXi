@@ -302,6 +302,8 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         [_closeButton setImage:[UIImage imageNamed:@"close_preview"] forState:UIControlStateNormal];
         _closeButton.exclusiveTouch = YES;
         [_closeButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id sender) {
+            UIViewController* currentViewCon = [self getTopLevelViewController];
+            [currentViewCon dismissViewControllerAnimated:YES completion:nil];
 
         }];
     }
@@ -368,6 +370,21 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         }];
     }
     return _startLiveButton;
+}
+
+#pragma expand method
+- (UIViewController*) getTopLevelViewController
+{
+    UIResponder* next = [self nextResponder];
+    do {
+        if ([next isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)next;
+        }
+        
+        next = [next nextResponder];
+    } while (next != nil);
+
+    return nil;
 }
 
 @end

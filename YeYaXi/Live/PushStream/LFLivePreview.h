@@ -10,4 +10,5 @@
 
 @interface LFLivePreview : UIView
 
+- (UIViewController*) getTopLevelViewController;
 @end

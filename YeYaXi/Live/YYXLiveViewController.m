@@ -8,7 +8,7 @@
 
 #import "YYXLiveViewController.h"
 #import "YYXInputURLViewController.h"
-#import "ViewController.h"
+#import "YYXPushStreamViewController.h"
 
 @interface YYXLiveViewController ()
 
@@ -22,7 +22,7 @@
 }
 
 - (IBAction)Live:(id)sender {
-    ViewController* liveViewController = [[ViewController alloc] initWithNibName:@"PushStreamViewController" bundle:NULL];
+    YYXPushStreamViewController* liveViewController = [[YYXPushStreamViewController alloc] initWithNibName:@"PushStreamViewController" bundle:NULL];
     
     //ViewController* liveViewController = [[ViewController alloc] init];
     
