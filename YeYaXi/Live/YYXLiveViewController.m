@@ -24,8 +24,6 @@
 - (IBAction)Live:(id)sender {
     YYXPushStreamViewController* liveViewController = [[YYXPushStreamViewController alloc] initWithNibName:@"PushStreamViewController" bundle:NULL];
     
-    //ViewController* liveViewController = [[ViewController alloc] init];
-    
     [self presentViewController:liveViewController animated:YES completion:NULL];
 }
 

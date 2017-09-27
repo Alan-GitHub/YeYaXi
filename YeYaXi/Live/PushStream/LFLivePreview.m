@@ -41,13 +41,18 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 @property (nonatomic, strong) LFLiveSession *session;
 @property (nonatomic, strong) UILabel *stateLabel;
 
+
 @end
 
 @implementation LFLivePreview
 
+@synthesize viewContr;
+
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor clearColor];
+//        self.centerX = self.centerX + 10;
+//        self.centerY = self.centerY - 400;
         [self requestAccessForVideo];
         [self requestAccessForAudio];
         [self addSubview:self.containerView];
@@ -59,6 +64,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     }
     return self;
 }
+
 
 #pragma mark -- Public Method
 - (void)requestAccessForVideo {
@@ -157,13 +163,14 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 
         /***   默认分辨率368 ＊ 640  音频：44.1 iphone6以上48  双声道  方向竖屏 ***/
         LFLiveVideoConfiguration *videoConfiguration = [LFLiveVideoConfiguration new];
-        videoConfiguration.videoSize = CGSizeMake(640, 360);
+        //videoConfiguration.videoSize = CGSizeMake(640, 360);
+        videoConfiguration.videoSize = CGSizeMake(360, 640);
         videoConfiguration.videoBitRate = 800*1024;
         videoConfiguration.videoMaxBitRate = 1000*1024;
         videoConfiguration.videoMinBitRate = 500*1024;
         videoConfiguration.videoFrameRate = 24;
         videoConfiguration.videoMaxKeyframeInterval = 48;
-        videoConfiguration.outputImageOrientation = UIInterfaceOrientationLandscapeLeft;
+        videoConfiguration.outputImageOrientation = UIInterfaceOrientationPortrait; //UIInterfaceOrientationLandscapeLeft;
         videoConfiguration.autorotate = NO;
         videoConfiguration.sessionPreset = LFCaptureSessionPreset720x1280;
         _session = [[LFLiveSession alloc] initWithAudioConfiguration:[LFLiveAudioConfiguration defaultConfiguration] videoConfiguration:videoConfiguration captureType:LFLiveCaptureDefaultMask];
@@ -301,13 +308,20 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         _closeButton.top = 20;
         [_closeButton setImage:[UIImage imageNamed:@"close_preview"] forState:UIControlStateNormal];
         _closeButton.exclusiveTouch = YES;
-        [_closeButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id sender) {
-            UIViewController* currentViewCon = [self getTopLevelViewController];
-            [currentViewCon dismissViewControllerAnimated:YES completion:nil];
-
-        }];
+//        [_closeButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id sender) {
+//            
+//            [self.viewContr dismissViewControllerAnimated:YES completion:nil];
+//
+//        }];
+        [_closeButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeButton;
+}
+
+- (void) close
+{
+    NSLog(@"self.containerView.bounds=%@", NSStringFromCGRect(self.containerView.bounds));
+    [self.viewContr dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (UIButton *)cameraButton {

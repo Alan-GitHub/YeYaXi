@@ -18,9 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    LFLivePreview* view = [[LFLivePreview alloc] initWithFrame:self.view.bounds];
     
-    [self.view addSubview:[[LFLivePreview alloc] initWithFrame:self.view.bounds]];
+    view.viewContr = self;
+    
+    [self.view addSubview: view];
 }
+
 
 //- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
 //    return UIInterfaceOrientationMaskLandscape;

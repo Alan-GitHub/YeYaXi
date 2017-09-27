@@ -10,5 +10,8 @@
 
 @interface LFLivePreview : UIView
 
+//Add by Alan
+@property (nonatomic, strong) UIViewController* viewContr;
+
 - (UIViewController*) getTopLevelViewController;
 @end
