@@ -12,6 +12,7 @@
 
 //Add by Alan
 @property (nonatomic, strong) UIViewController* viewContr;
+@property (nonatomic, copy) NSString* serverAddr;
 
 - (UIViewController*) getTopLevelViewController;
 @end

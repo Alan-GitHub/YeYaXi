@@ -22,6 +22,7 @@
 		E7E7D57E1F7404E800D3C81C /* LFLivePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E7D5701F7404E800D3C81C /* LFLivePreview.m */; settings = {ASSET_TAGS = (); }; };
 		E7E7D57F1F7404E800D3C81C /* YYXPushStreamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E7D5721F7404E800D3C81C /* YYXPushStreamViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E7E7D5811F74061D00D3C81C /* PushStreamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E7D5801F74061D00D3C81C /* PushStreamViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		E7E9EEC81F80C895000DE528 /* YYXPopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E9EEC71F80C895000DE528 /* YYXPopMenuView.m */; settings = {ASSET_TAGS = (); }; };
 		E7FDB0E61F7153E80010F86E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FDB0E51F7153E80010F86E /* main.m */; };
 		E7FDB0E91F7153E80010F86E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FDB0E81F7153E80010F86E /* AppDelegate.m */; };
 		E7FDB0F41F7153E80010F86E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FDB0F31F7153E80010F86E /* Assets.xcassets */; };
@@ -74,6 +75,8 @@
 		E7E7D5711F7404E800D3C81C /* YYXPushStreamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXPushStreamViewController.h; sourceTree = "<group>"; };
 		E7E7D5721F7404E800D3C81C /* YYXPushStreamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXPushStreamViewController.m; sourceTree = "<group>"; };
 		E7E7D5801F74061D00D3C81C /* PushStreamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PushStreamViewController.xib; sourceTree = "<group>"; };
+		E7E9EEC61F80C895000DE528 /* YYXPopMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYXPopMenuView.h; sourceTree = "<group>"; };
+		E7E9EEC71F80C895000DE528 /* YYXPopMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYXPopMenuView.m; sourceTree = "<group>"; };
 		E7FDB0E11F7153E80010F86E /* YeYaXi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YeYaXi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FDB0E51F7153E80010F86E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E7FDB0E71F7153E80010F86E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				E7E7D5651F7404E800D3C81C /* images */,
 				E7E7D56F1F7404E800D3C81C /* LFLivePreview.h */,
 				E7E7D5701F7404E800D3C81C /* LFLivePreview.m */,
+				E7E9EEC61F80C895000DE528 /* YYXPopMenuView.h */,
+				E7E9EEC71F80C895000DE528 /* YYXPopMenuView.m */,
 				E7E7D5711F7404E800D3C81C /* YYXPushStreamViewController.h */,
 				E7E7D5801F74061D00D3C81C /* PushStreamViewController.xib */,
 				E7E7D5721F7404E800D3C81C /* YYXPushStreamViewController.m */,
@@ -439,6 +444,7 @@
 				E7FDB1D61F72BA330010F86E /* YYXInputURLViewController.m in Sources */,
 				E7FDB1D31F72BA330010F86E /* IJKMoviePlayerViewController.m in Sources */,
 				E7FDB1D71F72BA330010F86E /* YYXLiveViewController.m in Sources */,
+				E7E9EEC81F80C895000DE528 /* YYXPopMenuView.m in Sources */,
 				E7E7D57F1F7404E800D3C81C /* YYXPushStreamViewController.m in Sources */,
 				E7E7D57E1F7404E800D3C81C /* LFLivePreview.m in Sources */,
 				E7E7D5731F7404E800D3C81C /* UIControl+YYAdd.m in Sources */,

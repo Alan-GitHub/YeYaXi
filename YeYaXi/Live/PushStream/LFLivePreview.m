@@ -10,6 +10,7 @@
 #import "UIControl+YYAdd.h"
 #import "UIView+YYAdd.h"
 #import "LFLiveKit.h"
+#import "YYXPopMenuView.h"
 
 inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     if (elapsed_milli <= 0) {
@@ -32,6 +33,8 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 
 @interface LFLivePreview ()<LFLiveSessionDelegate>
 
+
+@property (nonatomic, strong) UIButton *settingButton;
 @property (nonatomic, strong) UIButton *beautyButton;
 @property (nonatomic, strong) UIButton *cameraButton;
 @property (nonatomic, strong) UIButton *closeButton;
@@ -40,6 +43,8 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 @property (nonatomic, strong) LFLiveDebug *debugInfo;
 @property (nonatomic, strong) LFLiveSession *session;
 @property (nonatomic, strong) UILabel *stateLabel;
+
+@property (nonatomic, strong) YYXPopMenuView* popMenu;
 
 
 @end
@@ -60,7 +65,11 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         [self.containerView addSubview:self.closeButton];
         [self.containerView addSubview:self.cameraButton];
         [self.containerView addSubview:self.beautyButton];
+        [self.containerView addSubview:self.settingButton];
         [self.containerView addSubview:self.startLiveButton];
+        
+        self.serverAddr = @"rtmp://192.168.1.100:1935/live1/rome1";
+        self.popMenu = [[YYXPopMenuView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     }
     return self;
 }
@@ -357,6 +366,24 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
     return _beautyButton;
 }
 
+- (UIButton *)settingButton {
+    if (!_settingButton) {
+        _settingButton = [UIButton new];
+        _settingButton.size = CGSizeMake(44, 44);
+        _settingButton.origin = CGPointMake(_beautyButton.left - 10 - _settingButton.width, 20);
+        [_settingButton setImage:[UIImage imageNamed:@"mine-setting-iconN"] forState:UIControlStateNormal];
+        _settingButton.exclusiveTouch = YES;
+        __weak typeof(self) _self = self;
+        [_settingButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id sender) {
+
+            [self addSubview:self.popMenu];
+            [self.popMenu showPopMenu:_settingButton];
+        }];
+    }
+    return _settingButton;
+}
+
+
 - (UIButton *)startLiveButton {
     if (!_startLiveButton) {
         _startLiveButton = [UIButton new];
@@ -375,7 +402,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
             if (_self.startLiveButton.selected) {
                 [_self.startLiveButton setTitle:@"结束直播" forState:UIControlStateNormal];
                 LFLiveStreamInfo *stream = [LFLiveStreamInfo new];
-                stream.url = @"rtmp://192.168.1.102:1935/live1/rome1";
+                stream.url = self.serverAddr;
                 [_self.session startLive:stream];
             } else {
                 [_self.startLiveButton setTitle:@"开始直播" forState:UIControlStateNormal];
