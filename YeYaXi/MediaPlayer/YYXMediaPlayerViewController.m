@@ -7,6 +7,7 @@
 //
 
 #import "YYXMediaPlayerViewController.h"
+#import "YYXPlayerViewController.h"
 
 @interface YYXMediaPlayerViewController ()
 
@@ -17,6 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+
+- (IBAction)playNetworkMedia:(id)sender {
+    
+    NSLog(@"playNetworkMedia");
+}
+
+
+- (IBAction)playLocalMedia:(id)sender {
+    
+    NSLog(@"playLocalMedia");
+    YYXPlayerViewController* playViewControl = [[YYXPlayerViewController alloc] initWithNibName:@"YYXPlayerViewController" bundle:nil];
+    [self presentViewController:playViewControl animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
