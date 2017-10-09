@@ -10,5 +10,8 @@
 
 @interface YYXPlayerViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *backView;
+@property (nonatomic, strong) IBOutlet UIView *backView;
+//@property (nonatomic, retain) NSString* mediaPath;
+
+//- (void) initPlayer;
 @end

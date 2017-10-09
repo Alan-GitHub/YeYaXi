@@ -22,14 +22,13 @@
 
 
 - (IBAction)playNetworkMedia:(id)sender {
-    
-    NSLog(@"playNetworkMedia");
+
+    [self playLocalMedia:sender];
 }
 
 
 - (IBAction)playLocalMedia:(id)sender {
-    
-    NSLog(@"playLocalMedia");
+
     YYXPlayerViewController* playViewControl = [[YYXPlayerViewController alloc] initWithNibName:@"YYXPlayerViewController" bundle:nil];
     [self presentViewController:playViewControl animated:YES completion:nil];
 }
