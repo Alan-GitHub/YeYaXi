@@ -255,23 +255,16 @@
             break;
         case UIInterfaceOrientationPortrait:{
             NSLog(@"第0个旋转方向---电池栏在上");
-            
             [self toCell];
-            
-            
         }
             break;
         case UIInterfaceOrientationLandscapeLeft:{
             NSLog(@"第2个旋转方向---电池栏在右");
-            
-            
             [self toFullScreenWithInterfaceOrientation:interfaceOrientation];
         }
             break;
         case UIInterfaceOrientationLandscapeRight:{
             NSLog(@"第1个旋转方向---电池栏在左");
-            
-            
             [self toFullScreenWithInterfaceOrientation:interfaceOrientation];
         }
             break;
@@ -545,17 +538,19 @@
 -(void)toFullScreenWithInterfaceOrientation:(UIInterfaceOrientation )interfaceOrientation{
     // 先移除之前的
     [self.backView removeFromSuperview];
+    
     // 初始化
-    self.backView.transform = CGAffineTransformIdentity;
-    if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
-        self.backView.transform = CGAffineTransformMakeRotation(-M_PI_2);
-    }else if(interfaceOrientation==UIInterfaceOrientationLandscapeRight){
-        self.backView.transform = CGAffineTransformMakeRotation(M_PI_2);
-    }
+//    self.backView.transform = CGAffineTransformIdentity;
+//    if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
+//        self.backView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+//    }else if(interfaceOrientation==UIInterfaceOrientationLandscapeRight){
+//        self.backView.transform = CGAffineTransformMakeRotation(M_PI_2);
+//    }
+    
     // BackView的frame能全屏
     self.backView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-    // layer的方向宽和高对调
-    self.playerLayer.frame = CGRectMake(0, 0, kScreenHeight, kScreenWidth);
+    // layer的方向宽和高
+    self.playerLayer.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     
     // remark 约束
     [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
