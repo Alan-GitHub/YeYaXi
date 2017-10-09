@@ -555,15 +555,15 @@
     // remark 约束
     [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(50);
-        make.top.mas_equalTo(kScreenWidth-50);
+        make.top.mas_equalTo(kScreenHeight-50);
         make.left.equalTo(self.backView).with.offset(0);
-        make.width.mas_equalTo(kScreenHeight);
+        make.width.mas_equalTo(kScreenWidth);
     }];
     
     [self.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(50);
         make.left.equalTo(self.backView).with.offset(0);
-        make.width.mas_equalTo(kScreenHeight);
+        make.width.mas_equalTo(kScreenWidth);
     }];
     
     [self.closeButton mas_remakeConstraints:^(MASConstraintMaker *make) {
