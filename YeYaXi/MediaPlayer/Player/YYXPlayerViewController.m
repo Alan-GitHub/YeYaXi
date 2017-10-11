@@ -9,6 +9,7 @@
 #import "YYXPlayerViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "Masonry.h"
+#import <Foundation/Foundation.h>
 
 @interface YYXPlayerViewController ()
 
@@ -456,7 +457,15 @@
 #pragma mark - 单击手势
 - (void)singleTap:(UITapGestureRecognizer *)tap
 {
-    NSLog(@"singleTap");
+    
+
+    NSLog(@"currentDevice=%ld",[UIDevice currentDevice].orientation);
+    
+    NSLog(@"statusBarOrientation=%ld",[UIApplication sharedApplication].statusBarOrientation);
+    NSLog(@"interfaceOrientation=%ld",self.interfaceOrientation);
+    
+    
+    
     // 和即时搜索一样，删除之前未执行的操作
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(autoDismissView:) object:nil];
     
@@ -509,15 +518,16 @@
     if (!self.isFullScreen)
     {
         [self toFullScreenWithInterfaceOrientation:UIInterfaceOrientationLandscapeLeft];
-        [self.fullScreenButton setImage:[UIImage imageNamed:@"nonfullscreen@3x"] forState:UIControlStateNormal];
     }
     else
     {
+        NSNumber* value = [NSNumber numberWithInt: UIInterfaceOrientationLandscapeLeft];
+        
+        [self setValue: value forKey: @"interfaceOrientation"];
+//        [[UIDevice currentDevice] setValue: value forKey: @"orientation"];
         [self toCell];
-        [self.fullScreenButton setImage:[UIImage imageNamed:@"fullscreen@3x"] forState:UIControlStateNormal];
     }
     self.isFullScreen = !self.isFullScreen;
-    
 }
 
 #pragma mark - close
@@ -534,36 +544,53 @@
     }
 }
 
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+////    return UIInterfaceOrientationMaskLandscape;
+//    return UIInterfaceOrientationMaskLandscape;
+//}
+
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+//    
+//    return NO;
+//}
+
+- (BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 // 全屏显示
 -(void)toFullScreenWithInterfaceOrientation:(UIInterfaceOrientation )interfaceOrientation{
     // 先移除之前的
     [self.backView removeFromSuperview];
     
     // 初始化
-//    self.backView.transform = CGAffineTransformIdentity;
-//    if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
-//        self.backView.transform = CGAffineTransformMakeRotation(-M_PI_2);
-//    }else if(interfaceOrientation==UIInterfaceOrientationLandscapeRight){
-//        self.backView.transform = CGAffineTransformMakeRotation(M_PI_2);
-//    }
+    self.backView.transform = CGAffineTransformIdentity;
+    if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
+        self.backView.transform = CGAffineTransformMakeRotation(-M_PI_2);
+    }else if(interfaceOrientation==UIInterfaceOrientationLandscapeRight){
+        self.backView.transform = CGAffineTransformMakeRotation(M_PI_2);
+    }
     
     // BackView的frame能全屏
     self.backView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    self.backView.backgroundColor = [UIColor redColor];
+                                     
     // layer的方向宽和高
-    self.playerLayer.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    self.playerLayer.frame = CGRectMake(0, 0, kScreenHeight, kScreenWidth);
     
     // remark 约束
     [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(50);
-        make.top.mas_equalTo(kScreenHeight-50);
+        make.top.mas_equalTo(kScreenWidth-50);
         make.left.equalTo(self.backView).with.offset(0);
-        make.width.mas_equalTo(kScreenWidth);
+        make.width.mas_equalTo(kScreenHeight);
     }];
     
     [self.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(50);
         make.left.equalTo(self.backView).with.offset(0);
-        make.width.mas_equalTo(kScreenWidth);
+        make.width.mas_equalTo(kScreenHeight);
     }];
     
     [self.closeButton mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -593,8 +620,12 @@
         make.size.mas_equalTo(CGSizeMake(100, 20));
     }];
     
+    [self.fullScreenButton setImage:[UIImage imageNamed:@"nonfullscreen@3x"] forState:UIControlStateNormal];
+    self.isFullScreen = YES;
+    
     // 加到window上面
-    [[UIApplication sharedApplication].keyWindow addSubview:self.backView];
+    // [[UIApplication sharedApplication].keyWindow addSubview:self.backView];
+    [self.view addSubview:self.backView];
     
 }
 
@@ -634,6 +665,8 @@
         
     }];
     
+    [self.fullScreenButton setImage:[UIImage imageNamed:@"fullscreen@3x"] forState:UIControlStateNormal];
+    self.isFullScreen = NO;
 }
 
 - (void) dealloc
