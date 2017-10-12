@@ -458,14 +458,8 @@
 - (void)singleTap:(UITapGestureRecognizer *)tap
 {
     
+    NSLog(@"self.isFullScreen=%d", self.isFullScreen);
 
-    NSLog(@"currentDevice=%ld",[UIDevice currentDevice].orientation);
-    
-    NSLog(@"statusBarOrientation=%ld",[UIApplication sharedApplication].statusBarOrientation);
-    NSLog(@"interfaceOrientation=%ld",self.interfaceOrientation);
-    
-    
-    
     // 和即时搜索一样，删除之前未执行的操作
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(autoDismissView:) object:nil];
     
@@ -521,18 +515,14 @@
     }
     else
     {
-        NSNumber* value = [NSNumber numberWithInt: UIInterfaceOrientationLandscapeLeft];
-        
-        [self setValue: value forKey: @"interfaceOrientation"];
-//        [[UIDevice currentDevice] setValue: value forKey: @"orientation"];
         [self toCell];
     }
-    self.isFullScreen = !self.isFullScreen;
 }
 
 #pragma mark - close
 - (void)closeButton:(UIButton *)button
 {
+    
     if (self.isFullScreen)
     {
         [self clickFullScreen:nil];
@@ -559,25 +549,38 @@
     return NO;
 }
 
+
+//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+//{
+//    NSLog(@"didRotateFromInterfaceOrientation");
+//    self.backView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+//    self.backView.backgroundColor = [UIColor redColor];
+//    
+//    // layer的方向宽和高
+//    self.playerLayer.frame = self.backView.bounds;
+//
+//}
+
 // 全屏显示
 -(void)toFullScreenWithInterfaceOrientation:(UIInterfaceOrientation )interfaceOrientation{
     // 先移除之前的
-    [self.backView removeFromSuperview];
+//    [self.backView removeFromSuperview];
     
     // 初始化
     self.backView.transform = CGAffineTransformIdentity;
-    if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft) {
+    
+    if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft)
+    {
         self.backView.transform = CGAffineTransformMakeRotation(-M_PI_2);
-    }else if(interfaceOrientation==UIInterfaceOrientationLandscapeRight){
+    }
+    else if(interfaceOrientation==UIInterfaceOrientationLandscapeRight)
+    {
         self.backView.transform = CGAffineTransformMakeRotation(M_PI_2);
     }
     
-    // BackView的frame能全屏
     self.backView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-    self.backView.backgroundColor = [UIColor redColor];
-                                     
     // layer的方向宽和高
-    self.playerLayer.frame = CGRectMake(0, 0, kScreenHeight, kScreenWidth);
+    self.playerLayer.frame = self.backView.bounds;
     
     // remark 约束
     [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -589,6 +592,7 @@
     
     [self.topView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(50);
+        make.top.equalTo(self.backView).with.offset(0);
         make.left.equalTo(self.backView).with.offset(0);
         make.width.mas_equalTo(kScreenHeight);
     }];
@@ -625,14 +629,14 @@
     
     // 加到window上面
     // [[UIApplication sharedApplication].keyWindow addSubview:self.backView];
-    [self.view addSubview:self.backView];
+//    [self.view addSubview:self.backView];
     
 }
 
 // 缩小到cell
 -(void)toCell{
     // 先移除
-    [self.backView removeFromSuperview];
+//    [self.backView removeFromSuperview];
     
     __weak typeof(self)weakSelf = self;
     [UIView animateWithDuration:0.5f animations:^{
@@ -640,7 +644,7 @@
         weakSelf.backView.frame = CGRectMake(0, 80, kScreenWidth, kScreenHeight / 2.5);
         weakSelf.playerLayer.frame =  weakSelf.backView.bounds;
         // 再添加到View上
-        [weakSelf.view addSubview:weakSelf.backView];
+//        [weakSelf.view addSubview:weakSelf.backView];
         
         // remark约束
         [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
