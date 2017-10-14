@@ -62,7 +62,7 @@
     [self.backView addGestureRecognizer:displayCtr];
     
     [self initUI];
-    
+
     [self initPlayer];
 }
 
@@ -207,14 +207,14 @@
         make.top.equalTo(self.slider.mas_bottom).with.offset(0);
         make.size.mas_equalTo(CGSizeMake(100, 20));
     }];
-    
-    
 }
 
 - (void) initPlayer
 {
     NSString* mediaPath = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"mp4"];
     NSURL* mediaUrl = [NSURL fileURLWithPath:mediaPath];
+ 
+    __weak typeof(self)weakSelf = self;
     
     //创建播放器相关
     self.playerItem = [AVPlayerItem playerItemWithURL:mediaUrl];
@@ -229,11 +229,10 @@
     [self.backView.layer insertSublayer:self.playerLayer atIndex:0];
 
     //添加观察者
-    [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    [self.playerItem addObserver:weakSelf forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
     
     // 监听缓存大小
     [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
-    
     
     //旋转屏幕通知
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -274,21 +273,6 @@
     }
 }
 
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-//{
-//    AVPlayerItem* playItem = (AVPlayerItem*) object;
-//    
-//    if ([keyPath isEqualToString:@"status"]) {
-//        
-//        if (playItem.status == AVPlayerItemStatusReadyToPlay) {
-////            [self.player play];
-//        }
-//        else
-//        {
-//            NSLog(@"load break...");
-//        }
-//    }
-//}
 
 // 监听播放器的变化属性
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
@@ -298,15 +282,11 @@
         AVPlayerItemStatus statues = [change[NSKeyValueChangeNewKey] integerValue];
         switch (statues) {
             case AVPlayerItemStatusReadyToPlay:
-                
-                NSLog(@"case AVPlayerItemStatusReadyToPlay:");
-                
                 // 最大值直接用sec，以前都是
                 // CMTimeMake(帧数（slider.value * timeScale）, 帧/sec)
                 self.slider.maximumValue = CMTimeGetSeconds(self.playerItem.duration);
                 [self initTimer];
-                
-                
+
                 // 启动定时器 5秒自动隐藏
                 if (!self.autoDismissTimer)
                 {
@@ -314,15 +294,11 @@
                     [[NSRunLoop currentRunLoop] addTimer:self.autoDismissTimer forMode:NSDefaultRunLoopMode];
                 }
                 break;
+                
             case AVPlayerItemStatusUnknown:
-                
-                
-                
                 break;
+                
             case AVPlayerItemStatusFailed:
-                
-                
-                
                 break;
                 
             default:
@@ -331,7 +307,6 @@
     }
     else if ([keyPath isEqualToString:@"loadedTimeRanges"]) // 监听缓存进度的属性
     {
-        
         // 计算缓存进度
         NSTimeInterval timeInterval = [self availableDuration];
         // 获取总长度
@@ -378,7 +353,6 @@
         {
             weakSelf.slider.value = CMTimeGetSeconds(weakSelf.playerItem.currentTime);
         }
-        
     }];
 }
 
@@ -402,7 +376,6 @@
     return [fotmmatter stringFromDate:date];
 }
 
-
 #pragma mark
 #pragma mark - slider的更改
 // 拖拽的时候调用  这个时候不更新视频进度
@@ -410,6 +383,7 @@
 {
     self.isDragSlider = YES;
 }
+
 // 点击调用  或者 拖拽完毕的时候调用
 - (void)sliderTapValueChange:(UISlider *)slider
 {
@@ -435,7 +409,6 @@
     }
 }
 
-
 #pragma mark
 #pragma mark - 暂停或者播放
 - (void)pauseOrPlay:(UIButton *)sender
@@ -457,9 +430,6 @@
 #pragma mark - 单击手势
 - (void)singleTap:(UITapGestureRecognizer *)tap
 {
-    
-    NSLog(@"self.isFullScreen=%d", self.isFullScreen);
-
     // 和即时搜索一样，删除之前未执行的操作
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(autoDismissView:) object:nil];
     
@@ -498,7 +468,6 @@
                 
                 self.bottomView.alpha = 0;
                 self.topView.alpha = 0;
-                
             }];
         }
     }
@@ -534,37 +503,14 @@
     }
 }
 
-//- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-////    return UIInterfaceOrientationMaskLandscape;
-//    return UIInterfaceOrientationMaskLandscape;
-//}
-
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-//    
-//    return NO;
-//}
 
 - (BOOL)shouldAutorotate
 {
     return NO;
 }
 
-
-//- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-//{
-//    NSLog(@"didRotateFromInterfaceOrientation");
-//    self.backView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-//    self.backView.backgroundColor = [UIColor redColor];
-//    
-//    // layer的方向宽和高
-//    self.playerLayer.frame = self.backView.bounds;
-//
-//}
-
 // 全屏显示
 -(void)toFullScreenWithInterfaceOrientation:(UIInterfaceOrientation )interfaceOrientation{
-    // 先移除之前的
-//    [self.backView removeFromSuperview];
     
     // 初始化
     self.backView.transform = CGAffineTransformIdentity;
@@ -626,25 +572,15 @@
     
     [self.fullScreenButton setImage:[UIImage imageNamed:@"nonfullscreen@3x"] forState:UIControlStateNormal];
     self.isFullScreen = YES;
-    
-    // 加到window上面
-    // [[UIApplication sharedApplication].keyWindow addSubview:self.backView];
-//    [self.view addSubview:self.backView];
-    
 }
 
 // 缩小到cell
 -(void)toCell{
-    // 先移除
-//    [self.backView removeFromSuperview];
-    
     __weak typeof(self)weakSelf = self;
     [UIView animateWithDuration:0.5f animations:^{
         weakSelf.backView.transform = CGAffineTransformIdentity;
         weakSelf.backView.frame = CGRectMake(0, 80, kScreenWidth, kScreenHeight / 2.5);
         weakSelf.playerLayer.frame =  weakSelf.backView.bounds;
-        // 再添加到View上
-//        [weakSelf.view addSubview:weakSelf.backView];
         
         // remark约束
         [self.bottomView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -673,17 +609,22 @@
     self.isFullScreen = NO;
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.autoDismissTimer invalidate];
+    self.autoDismissTimer = nil;
+}
+
 - (void) dealloc
 {
-    [self.playerItem removeObserver:self forKeyPath:@"status"];
-
+    [self.playerItem removeObserver:self forKeyPath:@"status" context:nil];
+    [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges" context:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 @end

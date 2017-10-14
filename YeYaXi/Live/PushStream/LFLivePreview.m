@@ -376,8 +376,8 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
         __weak typeof(self) _self = self;
         [_settingButton addBlockForControlEvents:UIControlEventTouchUpInside block:^(id sender) {
 
-            [self addSubview:self.popMenu];
-            [self.popMenu showPopMenu:_settingButton];
+            [_self addSubview:_self.popMenu];
+            [_self.popMenu showPopMenu:_self.settingButton];
         }];
     }
     return _settingButton;
@@ -402,7 +402,7 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
             if (_self.startLiveButton.selected) {
                 [_self.startLiveButton setTitle:@"结束直播" forState:UIControlStateNormal];
                 LFLiveStreamInfo *stream = [LFLiveStreamInfo new];
-                stream.url = self.serverAddr;
+                stream.url = _self.serverAddr;
                 [_self.session startLive:stream];
             } else {
                 [_self.startLiveButton setTitle:@"开始直播" forState:UIControlStateNormal];
