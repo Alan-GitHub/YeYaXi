@@ -329,7 +329,6 @@ inline static NSString *formatedSpeed(float bytes, float elapsed_milli) {
 
 - (void) close
 {
-    NSLog(@"self.containerView.bounds=%@", NSStringFromCGRect(self.containerView.bounds));
     [self.viewContr dismissViewControllerAnimated:YES completion:nil];
 }
 

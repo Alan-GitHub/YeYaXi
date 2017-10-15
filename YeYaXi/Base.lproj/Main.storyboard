@@ -17,51 +17,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_register_background" translatesAutoresizingMaskIntoConstraints="NO" id="NtE-DX-LMe" userLabel="backgroundImage">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="直播页面" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTE-KG-0Hb">
-                                <rect key="frame" x="16" y="100" width="343" height="36"/>
+                                <rect key="frame" x="116" y="100" width="143" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOZ-Bh-4KS">
-                                <rect key="frame" x="136" y="332" width="103" height="36"/>
-                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="我要做观众"/>
-                                <connections>
-                                    <action selector="Watch:" destination="9pv-A4-QxB" eventType="touchUpInside" id="nKj-pg-lfs"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4K-CY-kxH">
-                                <rect key="frame" x="136" y="216" width="103" height="36"/>
-                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="116" y="216" width="143" height="36"/>
+                                <color key="backgroundColor" red="0.17294368760000001" green="1" blue="0.13454820510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="我要当主播">
-                                    <color key="titleColor" red="1" green="0.079937060670000004" blue="0.1489183348" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="我要当主播"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="Live:" destination="9pv-A4-QxB" eventType="touchUpInside" id="NWv-US-Zk3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOZ-Bh-4KS">
+                                <rect key="frame" x="116" y="332" width="143" height="36"/>
+                                <color key="backgroundColor" red="0.17294368760000001" green="1" blue="0.13454820510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="我要做观众"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Watch:" destination="9pv-A4-QxB" eventType="touchUpInside" id="nKj-pg-lfs"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.17294368760000001" green="1" blue="0.13454820510000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="l4K-CY-kxH" firstAttribute="top" secondItem="yTE-KG-0Hb" secondAttribute="bottom" constant="80" id="1bo-oV-oMh"/>
-                            <constraint firstItem="l4K-CY-kxH" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="120" id="Eur-Oy-Ruc"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="NtE-DX-LMe" secondAttribute="bottom" id="BSc-dA-fia"/>
+                            <constraint firstItem="NtE-DX-LMe" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="Brl-Ud-bWc"/>
+                            <constraint firstAttribute="trailing" secondItem="NtE-DX-LMe" secondAttribute="trailing" id="Cfw-Pa-Lx8"/>
+                            <constraint firstItem="l4K-CY-kxH" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="100" id="Eur-Oy-Ruc"/>
                             <constraint firstItem="yTE-KG-0Hb" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="80" id="Ge1-Ai-XLq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="l4K-CY-kxH" secondAttribute="trailing" constant="120" id="OCY-MD-tYb"/>
-                            <constraint firstItem="l4K-CY-kxH" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="fjy-wn-rH6"/>
-                            <constraint firstItem="yTE-KG-0Hb" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="nOO-tV-78Q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="l4K-CY-kxH" secondAttribute="trailing" constant="100" id="OCY-MD-tYb"/>
+                            <constraint firstItem="yTE-KG-0Hb" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="100" id="bca-49-Isz"/>
+                            <constraint firstItem="NtE-DX-LMe" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="nZG-45-vQq"/>
                             <constraint firstItem="IOZ-Bh-4KS" firstAttribute="top" secondItem="l4K-CY-kxH" secondAttribute="bottom" constant="80" id="rBE-zG-iif"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="yTE-KG-0Hb" secondAttribute="trailing" id="ry1-VQ-BPd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="IOZ-Bh-4KS" secondAttribute="trailing" constant="120" id="zc5-9f-8ri"/>
-                            <constraint firstItem="IOZ-Bh-4KS" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="120" id="zrd-cz-Hfi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yTE-KG-0Hb" secondAttribute="trailing" constant="100" id="rJU-oU-QTS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IOZ-Bh-4KS" secondAttribute="trailing" constant="100" id="zc5-9f-8ri"/>
+                            <constraint firstItem="IOZ-Bh-4KS" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="100" id="zrd-cz-Hfi"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="fjy-wn-rH6"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="现场直播" image="first" id="acW-dT-cKf"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -82,40 +91,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_register_background" translatesAutoresizingMaskIntoConstraints="NO" id="Cod-4c-4ju" userLabel="backgroundImage">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="媒体播放" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="16" y="100" width="343" height="35"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="116" y="100" width="143" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="30"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3P-wa-WfM">
                                 <rect key="frame" x="116" y="215" width="143" height="36"/>
-                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17294368760000001" green="1" blue="0.13454820510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="播放网络媒体"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="playNetworkMedia:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Cjf-SO-lQT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRy-zZ-vQm">
                                 <rect key="frame" x="116" y="331" width="143" height="36"/>
-                                <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.17294368760000001" green="1" blue="0.13454820510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="播放本地文件"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="playLocalMedia:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="BPs-5d-u6O"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.17294368760000001" green="1" blue="0.13454820510000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="zEq-FU-wV5" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="3yV-cf-bIS"/>
+                            <constraint firstItem="zEq-FU-wV5" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="100" id="3yV-cf-bIS"/>
                             <constraint firstItem="X3P-wa-WfM" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="100" id="4Tv-5U-28M"/>
-                            <constraint firstItem="zEq-FU-wV5" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="5FV-B7-ZsM"/>
                             <constraint firstItem="zEq-FU-wV5" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="80" id="5IV-Yr-AUs"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="Cod-4c-4ju" secondAttribute="bottom" id="5xN-yj-ULA"/>
                             <constraint firstItem="X3P-wa-WfM" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="80" id="9yV-6v-pyv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="X3P-wa-WfM" secondAttribute="trailing" constant="100" id="BuS-QQ-L1K"/>
+                            <constraint firstItem="Cod-4c-4ju" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="E5F-9Z-JdV"/>
+                            <constraint firstAttribute="trailing" secondItem="Cod-4c-4ju" secondAttribute="trailing" id="Smu-ZN-zOP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zEq-FU-wV5" secondAttribute="trailing" constant="100" id="Ssh-TP-z4i"/>
+                            <constraint firstItem="Cod-4c-4ju" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="fMK-KY-8pr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IRy-zZ-vQm" secondAttribute="trailing" constant="100" id="jMV-TO-2Cj"/>
                             <constraint firstItem="IRy-zZ-vQm" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" constant="100" id="m36-YN-7N5"/>
                             <constraint firstItem="IRy-zZ-vQm" firstAttribute="top" secondItem="X3P-wa-WfM" secondAttribute="bottom" constant="80" id="ztb-10-RW5"/>
@@ -150,6 +176,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="login_register_background" width="320" height="568"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>

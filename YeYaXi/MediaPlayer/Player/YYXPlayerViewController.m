@@ -611,6 +611,8 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [super viewDidDisappear:animated];
+    
     [self.autoDismissTimer invalidate];
     self.autoDismissTimer = nil;
 }
