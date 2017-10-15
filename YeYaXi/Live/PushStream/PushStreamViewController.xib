@@ -13,9 +13,23 @@
         <view contentMode="scaleToFill" id="QU5-RT-wbX">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" red="1" green="0.79080833579999998" blue="0.1647881658" alpha="1" colorSpace="calibratedRGB"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_register_background" translatesAutoresizingMaskIntoConstraints="NO" id="qkq-AN-rsp" userLabel="backgroundImage">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qkq-AN-rsp" secondAttribute="trailing" id="0XY-ma-jOS"/>
+                <constraint firstAttribute="bottom" secondItem="qkq-AN-rsp" secondAttribute="bottom" id="h2o-Vy-t57"/>
+                <constraint firstItem="qkq-AN-rsp" firstAttribute="top" secondItem="QU5-RT-wbX" secondAttribute="top" id="hhS-wR-Ge8"/>
+                <constraint firstItem="qkq-AN-rsp" firstAttribute="leading" secondItem="QU5-RT-wbX" secondAttribute="leading" id="ufn-pN-lFb"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="268" y="316"/>
         </view>
     </objects>
+    <resources>
+        <image name="login_register_background" width="320" height="568"/>
+    </resources>
 </document>

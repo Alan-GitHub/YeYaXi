@@ -44,14 +44,14 @@
     self.menuBackground.layer.cornerRadius = 5;
     self.menuBackground.layer.masksToBounds = YES;
     self.menuBackground.frame = CGRectMake(menuBackgroundX, menuBackgroundY, menuBackgroundW, menuBackgroundH);
-    self.menuBackground.backgroundColor = [UIColor redColor];
+    self.menuBackground.backgroundColor = [UIColor darkGrayColor];
     
     for (NSInteger i = 0; i < self.menuItem.count; i++) {
         
         UIButton* optionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         optionBtn.frame = CGRectMake(0, self.menuItemHight * i, menuBackgroundW, self.menuItemHight);
-        optionBtn.backgroundColor = [UIColor greenColor];
-        [optionBtn setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
+        optionBtn.backgroundColor = [UIColor clearColor];
+        [optionBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [optionBtn setTitle:self.menuItem[i] forState:UIControlStateNormal];
         optionBtn.tag = i;
         [optionBtn addTarget:self action:@selector(optionBtnTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];

@@ -54,10 +54,6 @@
     self.backView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.backView];
     
-    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction)];
-    [self.view addGestureRecognizer:tap];
-    
-    
     UITapGestureRecognizer *displayCtr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
     [self.backView addGestureRecognizer:displayCtr];
     
@@ -65,12 +61,6 @@
 
     [self initPlayer];
 }
-
-- (void) tapAction
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 
 - (void)initUI
 {
